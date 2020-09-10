@@ -35,3 +35,21 @@ ping 查询到的ip（例：ping 192.30.255.113）
 
 > 注意：保存后记得`ipconfig /flushdns` 修改后刷新缓存
 
+```
+# Github
+151.101.1.194 github.global.ssl.fastly.net
+192.30.255.113 github.com
+#103.245.222.133 assets-cdn.github.com
+#23.235.47.133 assets-cdn.github.com
+#203.208.39.104 assets-cdn.github.com
+#204.232.175.78 documentcloud.github.com
+#204.232.175.94 gist.github.com
+#107.21.116.220 help.github.com
+#207.97.227.252 nodeload.github.com
+#199.27.76.130 raw.github.com
+#107.22.3.110 status.github.com
+#204.232.175.78 training.github.com
+#207.97.227.243 www.github.com
+#185.31.18.133 avatars0.githubusercontent.com
+#185.31.19.133 avatars1.githubusercontent.com
+```
