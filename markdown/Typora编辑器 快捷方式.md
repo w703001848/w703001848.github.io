@@ -1,5 +1,7 @@
 # Typora
 
+[官网](https://www.typora.io/)
+
 #### 快捷方式
 |功能|按键|
 |:-|:-:|
