@@ -1,4 +1,8 @@
 import React from 'react';
+import User from './component/User';
+import Clock from './component/Clock';
+import LoggingButton from './component/LoggingButton';
+import LoginControl from './component/LoginControl';
 import logo from './logo.svg';
 import './App.css';
 
@@ -7,6 +11,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <User />
+        <Clock />
+        <LoggingButton />
+        <LoginControl />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
