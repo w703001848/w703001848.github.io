@@ -1,3 +1,8 @@
+## bilibili 缓存目录 
+
+...\Android\data\tv.danmaku.bili\download
+
+
 ## 1、首先下载FFmpeg，下载地址及设置环境变量方法如下
 
 http://ffmpeg.zeranoe.com/builds/
@@ -19,7 +24,8 @@ http://ffmpeg.zeranoe.com/builds/
 执行以下命令
 
 ```
-cd  E:\Course\python
+E:
+cd  E:\Course\机器学习
 dir ./b > name.txt
 ```
 生成name.txt文件，打开删除文本末尾name.txt
@@ -27,7 +33,7 @@ dir ./b > name.txt
 
 
 ```
-for /f %i in (name.txt) do  cd E:\Course\python\%i\64 & ffmpeg -i video.m4s -i audio.m4s -c:v copy -strict experimental %i.mp4 & move %i.mp4 E:\Course\python & cd E:\Course\python
+for /f %i in (name.txt) do  cd E:\Course\机器学习\%i\16 & ffmpeg -i video.m4s -i audio.m4s -c:v copy -strict experimental %i.mp4 & move %i.mp4 E:\Course\机器学习 & cd E:\Course\机器学习
 ```
 
 等待执行完成
