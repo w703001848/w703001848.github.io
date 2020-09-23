@@ -17,24 +17,24 @@ npm是一个node包管理和分发工具，已经成为了非官方的发布node
 >   一般情况下会以本地模式运行，包会被安装到和你的应用程序代码的本地node_modules目录下。
 >   在全局模式下，Node包会被安装到Node的安装目录下的node_modules下。
 >   
->   全局安装命令为$npm install -g moduleName。
->   获知使用$npm set global=true来设定安装模式，$npm get global可以查看当前使用的安装模式。
+>   全局安装命令为`$npm install -g moduleName`。
+>   获知使用$npm set global=true来设定安装模式，`$npm get global`可以查看当前使用的安装模式。
 >   
 >   示例：
->   npm install express
->   默认会安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6
+>   `npm install express`
+>   默认会安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如`npm install express@3.0.6`
 >   
->   npm install <name> -g
+>   `npm install <name> -g`
 >   将包安装到全局环境中
 >   
 >   但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令
 >   
->   npm install <name> --save
+>   `npm install <name> --save`
 >   安装的同时，将信息写入package.json中项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包，这样代码提交到github时，就不用提交node_modules这个文件夹了。
 
 ## 2.npm view moduleNames：查看node模块的package.json文件夹
 
->   注意事项：如果想要查看package.json文件夹下某个标签的内容，可以使用$npm view moduleName labelName
+>   注意事项：如果想要查看package.json文件夹下某个标签的内容，可以使用`$npm view moduleName labelName`
 
 ## 3.npm list：查看当前目录下已安装的node包
 
@@ -56,6 +56,8 @@ npm是一个node包管理和分发工具，已经成为了非官方的发布node
 
 ## 11.npm update moduleName：更新node模块
 
+全局：`npm update -g moduleName`
+
 ## 12.npm uninstall moudleName：卸载node模块
 
 ## 13.一个npm包是包含了package.json的文件夹，package.json描述了这个文件夹的结构。访问npm的json文件夹的方法如下：
@@ -72,5 +74,8 @@ npm是一个node包管理和分发工具，已经成为了非官方的发布node
 ## 16.npm root：查看当前包的安装路径
 
 >   npm root -g：查看全局的包的安装路径
+>
+>   默认：C:\Users\Administrator\AppData\Roaming\npm\node_modules
 
 ## 17.npm -v：查看npm安装的版本
+
