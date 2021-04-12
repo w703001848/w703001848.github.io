@@ -22,6 +22,7 @@ git init
 
 ```
 git remote add origin git@192.168.xxx:xxx/project.git
+git branch --set-upstream-to=origin/master master
 git pull origin master
 ```
 
@@ -32,3 +33,11 @@ git add ./path/to/file
 git commit -m 'change for what?'
 git push origin master
 ```
+
+
+##### 查看本地分支
+
+```
+git branch
+```
+
