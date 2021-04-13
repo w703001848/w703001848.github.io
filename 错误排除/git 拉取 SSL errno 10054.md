@@ -5,4 +5,6 @@ Git报错解决：OpenSSL SSL_read: Connection was reset, errno 10054 错误解�
 这是服务器的SSL证书没有经过第三方机构的签署，所以报错。
 
 打开Git命令页面，执行git命令脚本：修改设置，解除ssl验证
-`git config --global http.sslVerify "false"`
+
+`git config http.sslVerify "false"` 
+`git config --global http.sslVerify "false"` 全局忽略
