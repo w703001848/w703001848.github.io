@@ -22,6 +22,8 @@ ping baidu.com
 
 [IP地址查找网站](https://ip.911cha.com/github.com.html)
 [IP地址查找网站2](http://tool.chinaz.com/dns/)
+[IP地址查找网站3](IPAddress.com)
+[IP地址查找网站4](http://ping.chinaz.com/)
 
 ping 查询到的ip（例：ping 192.30.255.113）
 
@@ -33,15 +35,17 @@ ping 查询到的ip（例：ping 192.30.255.113）
 
 再次ping github.com,可以发现对应的地址改变了，并且能够ping通。现在可以上传项目到github了
 
-> 注意：保存后记得`ipconfig /flushdns` 修改后刷新缓存
+> 注意：保存后用WIN+R快捷键打开运行窗口，输入命令：cmd并回车进入命令行窗口。
+>
+> ​			`ipconfig /flushdns` 修改后刷新缓存
 
 ```
 # Github
 151.101.1.194 github.global.ssl.fastly.net
 192.30.255.113 github.com
+203.208.39.104 assets-cdn.github.com
 #103.245.222.133 assets-cdn.github.com
 #23.235.47.133 assets-cdn.github.com
-#203.208.39.104 assets-cdn.github.com
 #204.232.175.78 documentcloud.github.com
 #204.232.175.94 gist.github.com
 #107.21.116.220 help.github.com
