@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>测试拆分</title>
+    </head>
+    <body>
+        <p id="key_num"></p>
+    </body>
+    <script type="text/javascript">
+        function time(){
+            setInterval(function(){
+                document.getElementById('key_num').innerText = Date();
+            }, 1000);
+        }
+        time();
+    </script>
+    <style>
+        body{
+            color: white;
+            background-color: black;
+        }
+    </style>
+</html>
