@@ -1,3 +1,15 @@
+# 初识
+
+[npm,Inc.](https:www.npmjs.com/)包共享平台
+
+## 加载
+
+当把目录作为模块标识符进行加载的时候，有三种加载方式：
+
+- 在被加载的目录下查找 `package.json` 的文件，并寻找 `main` 属性，作为 `require()` 加载的入口
+- 如果没有 `package.json` 文件，或者 `main` 入口不存在或无法解析，则 Node.js 将会试图加载目录下的 `index.js` 文件。
+- 若失败则报错
+
 # npm设置为淘宝源
 
 ```
@@ -12,23 +24,25 @@ npm是一个node包管理和分发工具，已经成为了非官方的发布node
 #### 1.`npm install moduleNames`：安装Node模块
 
 >   安装完毕后会产生一个node_modules目录，其目录下就是安装的各个node模块。
->   
+>
 >   node的安装分为全局模式和本地模式。
 >   一般情况下会以本地模式运行，包会被安装到和你的应用程序代码的本地node_modules目录下。
 >   在全局模式下，Node包会被安装到Node的安装目录下的node_modules下。
->   
->   全局安装命令为`$npm install -g moduleName`。
+>
+>   **开发安装**命令为`$npm install -D moduleName`同`$npm install --save-dev moduleName`
+>
+>   **全局安装**命令为`$npm install -g moduleName`。
 >   获知使用$npm set global=true来设定安装模式，`$npm get global`可以查看当前使用的安装模式。
->   
+>
 >   示例：
 >   `npm install express`
 >   默认会安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如`npm install express@3.0.6`
->   
+>
 >   `npm install <name> -g`
 >   将包安装到全局环境中
->   
+>
 >   但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令
->   
+>
 >   `npm install <name> --save`
 >   安装的同时，将信息写入package.json中项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包，这样代码提交到github时，就不用提交node_modules这个文件夹了。
 

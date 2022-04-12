@@ -15,6 +15,20 @@ npm i yarn -g
 
 Yarn -v
 
+## 无法运行yarn
+
+计算机上启动 Windows PowerShell 时，执行策略为 Restricted（默认设置）。
+
+Restricted 执行策略不允许任何脚本运行。
+
+RemoteSigned 执行策略可防止 Windows PowerShell 运行没有数字签名的脚本
+
+设置vs code管理员运行
+
+`get-ExecutionPolicy` // 查看执行策略
+
+`set-ExecutionPolicy RemoteSigned` // 设置执行策略
+
 ------
 
 1. ## 开始一个新工程
