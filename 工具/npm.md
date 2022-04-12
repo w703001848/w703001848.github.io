@@ -82,6 +82,14 @@ npm是一个node包管理和分发工具，已经成为了非官方的发布node
 #### 14.发布一个npm包的时候，需要检验某个包名是否已存在
 
 >   $ npm search packageName
+>
+>   $ npm login 登录npm，发布用
+>
+>   切换到包根目录
+>
+>   $ npm publish 发布包<@0.0.1>（包名不能和别人重复）
+>
+>   $ npm unpublish 包名 --force 删除包
 
 #### 15.`npm init`：会引导你创建一个package.json文件，包括名称、版本、作者这些信息等
 
