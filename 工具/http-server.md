@@ -6,7 +6,7 @@
 
 ## 安装
 
-```undefined
+```bash
 npm i -g http-server
 ```
 
@@ -14,7 +14,7 @@ npm i -g http-server
 
  在要成为服务器的目录下运行如下命令
 
-```undefined
+```bash
 http-server
 ```
 
@@ -22,7 +22,7 @@ http-server
 
 若要禁用缓存，请使用如下命令运行
 
-```swift
+```bash
 http-server -c-1
 ```
 

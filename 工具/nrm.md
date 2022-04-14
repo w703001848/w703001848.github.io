@@ -4,7 +4,7 @@
 
 ## 安装
 
-```
+```bash
 npm install -g nrm
 ```
 
@@ -12,31 +12,31 @@ npm install -g nrm
 
 #### 查看可选择的源
 
-```
+```bash
 nrm ls
 ```
 
 #### 切换镜像源–切换到`npm` 镜像源
 
-```
+```bash
 nrm use npm
 ```
 
 #### 增加镜像源
 
-```
+```bash
 nrm add registry http://registry.npm.frp.trmap.cn/
 ```
 
 #### 删除镜像源
 
-```
+```bash
 nrm del taobao
 ```
 
 #### 测试镜像源的速度
 
-```
+```bash
 nrm test npm
 ```
 

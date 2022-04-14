@@ -1,6 +1,6 @@
 # yarn设置为淘宝源
 
-```
+```bash
 yarn config set registry https://registry.npm.taobao.org --global
 yarn config set disturl https://npm.taobao.org/dist --global
 ```

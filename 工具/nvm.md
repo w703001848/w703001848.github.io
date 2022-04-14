@@ -4,25 +4,25 @@
 
 1、查看本地安装的所有版本；有可选参数available，显示所有可下载的版本。
 
-```
+```bash
 nvm list [available]
 ```
 
   2、安装，命令中的版本号可自定义，具体参考命令1查询出来的列表
 
-```
+```bash
 nvm install 11.13.0
 ```
 
   3、使用特定版本
 
-```
+```bash
 nvm use 11.13.0
 ```
 
   4、卸载
 
-```
+```bash
 nvm uninstall 11.13.0
 ```
 

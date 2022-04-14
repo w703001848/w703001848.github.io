@@ -6,7 +6,7 @@
 
 #### 先ping其他网站，查看本地
 
-```
+```bash
 ping baidu.com
 ```
 
@@ -39,7 +39,7 @@ ping 查询到的ip（例：ping 192.30.255.113）
 >
 > ​			`ipconfig /flushdns` 修改后刷新缓存
 
-```
+```bat
 # Github
 151.101.1.194 github.global.ssl.fastly.net
 192.30.255.113 github.com
