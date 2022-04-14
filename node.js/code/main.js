@@ -60,7 +60,11 @@ app.use((req, res) => {
 // 定义 500 页面
 app.use((err, req, res, next) => {
     console.log(err)
-    res.status(500).send('500 Server Error')
+    if (err.name === 'UnauthorizedError') {
+        return res.status(401).send('Invalid token')
+    }
+    res.status(500).send('Internal Server Error')
+    // res.sendStatus(500) 同上
 })
 
 // 启动服务器
