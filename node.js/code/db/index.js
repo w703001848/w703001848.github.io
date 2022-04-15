@@ -11,7 +11,7 @@ const db = mysql.createPool({
 });
 
 // // 查询
-// const sqlStr = 'select * from users'
+// const sqlStr = 'select * from ev_users'
 // db.query(sqlStr, (err, results) => {
 //   if (err) return console.log(err.message)
 //   console.log(results)

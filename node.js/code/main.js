@@ -1,7 +1,17 @@
 // 导入 express 模块
 const express = require('express')
+
+// 导入第三方模块
+// 导入cors模块
 const cors = require('cors')
-const apiRouter = require('./router/index.js')
+// 导入 @hapi/joi 模块
+const joi = require('joi')
+
+// 导入自定义模块
+// 导入路由模块
+const api_router = require('./router/index.js')
+const api_router_user = require('./router/user.js')
+const api_router_order = require('./router/order.js')
 
 // 创建 web 服务器
 const app = express()
@@ -14,6 +24,24 @@ app.use('/img', express.static('static'))
 app.use(function (req, res, next) {
     const t = parseInt(new Date().getTime()/1000)
     req.timestamp = t
+    // 返回函数封装success
+    res.sendStatusSuccess = function (data = null, msg = 'success') {
+        res.status(200).send({
+            code: 200,
+            data: data,
+            msg: msg,
+            timestamp: t,
+        })
+    }
+    // 返回函数封装error
+    res.sendStatusError = function (msg, code = 200, data = null) {
+        res.status(code).send({
+            code: code,
+            data: data,
+            msg: msg instanceof Error ? msg.message : msg,
+            timestamp: t,
+        })
+    }
     next()
 })
 
@@ -33,12 +61,7 @@ app.use(function (req, res, next) {
 // 设置路由(支持老版本浏览器接口)
 app.get('/api/jsonp/index', (req, res) => {
     const query = req.query
-    res.send({
-        code: 200,
-        data: query,
-        msg: 'success',
-        timestamp: req.timestamp,
-    })
+    res.sendStatusSuccess(query)
 })
 
 // CORS 跨域设置
@@ -47,23 +70,28 @@ app.use(cors())
 // 配置解析 JSON 格式 POST 请求的中间件
 app.use(express.json())
 // 配置解析表单 POST 请求的中间件
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 
 // 设置路由
-app.use('/api', apiRouter)
+app.use('/api', api_router)
+app.use('/api', api_router_user)
+app.use('/api', api_router_order)
 
 // 定义 404 页面
 app.use((req, res) => {
-    res.status(404).send('404 Not Found')
+    res.sendStatusError('404 Not Found', 404)
 })
 
 // 定义 500 页面
 app.use((err, req, res, next) => {
     console.log(err)
     if (err.name === 'UnauthorizedError') {
-        return res.status(401).send('Invalid token')
+        return res.sendStatusError('invalid token', 401)
+    }else if (err instanceof joi.ValidationError) {
+        return res.sendStatusError(err, 400)
     }
-    res.status(500).send('Internal Server Error')
+    res.sendStatusError(err.message || 'Internal Server Error', 500)
+    // res.status(500).send('Internal Server Error')
     // res.sendStatus(500) 同上
 })
 
