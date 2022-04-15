@@ -6,12 +6,16 @@ const express = require('express')
 const cors = require('cors')
 // 导入 @hapi/joi 模块
 const joi = require('joi')
+// 导入token验证中间件
+const expressJWT = require('express-jwt')
 
 // 导入自定义模块
 // 导入路由模块
 const api_router = require('./router/index.js')
 const api_router_user = require('./router/user.js')
 const api_router_order = require('./router/order.js')
+// 导入配置文件
+const config = require('./config/constData.js')
 
 // 创建 web 服务器
 const app = express()
@@ -26,7 +30,7 @@ app.use(function (req, res, next) {
     req.timestamp = t
     // 返回函数封装success
     res.sendStatusSuccess = function (data = null, msg = 'success') {
-        res.status(200).send({
+        res.send({
             code: 200,
             data: data,
             msg: msg,
@@ -34,7 +38,7 @@ app.use(function (req, res, next) {
         })
     }
     // 返回函数封装error
-    res.sendStatusError = function (msg, code = 200, data = null) {
+    res.sendStatusError = function (msg, code = 500, data = null) {
         res.status(code).send({
             code: code,
             data: data,
@@ -72,10 +76,13 @@ app.use(express.json())
 // 配置解析表单 POST 请求的中间件
 app.use(express.urlencoded({ extended: false }))
 
+// 指定接口不需要验证token
+app.use(expressJWT({secret: config.jwtSecretKey}).unless({path: ['/api/user/v1/register', '/api/user/v1/login']}))
+
 // 设置路由
-app.use('/api', api_router)
-app.use('/api', api_router_user)
-app.use('/api', api_router_order)
+app.use('/api/index', api_router)
+app.use('/api/user', api_router_user)
+app.use('/api/order', api_router_order)
 
 // 定义 404 页面
 app.use((req, res) => {
@@ -84,12 +91,13 @@ app.use((req, res) => {
 
 // 定义 500 页面
 app.use((err, req, res, next) => {
-    console.log(err)
     if (err.name === 'UnauthorizedError') {
         return res.sendStatusError('invalid token', 401)
     }else if (err instanceof joi.ValidationError) {
         return res.sendStatusError(err, 400)
     }
+    // 未知错误
+    console.log(err)
     res.sendStatusError(err.message || 'Internal Server Error', 500)
     // res.status(500).send('Internal Server Error')
     // res.sendStatus(500) 同上
