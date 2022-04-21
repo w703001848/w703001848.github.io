@@ -16,14 +16,14 @@ $(function() {
   function initUserInfo() {
     $.ajax({
       method: 'GET',
-      url: '/my/userinfo',
+      url: '/user/v1/userinfo',
       success: function(res) {
-        if (res.status !== 0) {
-          return layer.msg('获取用户信息失败！')
-        }
         // console.log(res)
         // 调用 form.val() 快速为表单赋值
         form.val('formUserInfo', res.data)
+      },
+      error: function(err) {
+        return layer.msg(err.responseJSON.msg)
       }
     })
   }
@@ -42,12 +42,9 @@ $(function() {
     // 发起 ajax 数据请求
     $.ajax({
       method: 'POST',
-      url: '/my/userinfo',
+      url: '/user/v1/updateUserinfo',
       data: $(this).serialize(),
       success: function(res) {
-        if (res.status !== 0) {
-          return layer.msg('更新用户信息失败！')
-        }
         layer.msg('更新用户信息成功！')
         // 调用父页面中的方法，重新渲染用户的头像和用户的信息
         window.parent.getUserInfo()

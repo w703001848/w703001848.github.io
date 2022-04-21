@@ -51,12 +51,12 @@ $(function() {
     // 2. 调用接口，把头像上传到服务器
     $.ajax({
       method: 'POST',
-      url: '/my/update/avatar',
+      url: '/user/v1/updateAvatar',
       data: {
         avatar: dataURL
       },
       success: function(res) {
-        if (res.status !== 0) {
+        if (res.code !== 200) {
           return layer.msg('更换头像失败！')
         }
         layer.msg('更换头像成功！')

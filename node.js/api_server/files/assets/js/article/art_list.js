@@ -39,10 +39,10 @@ $(function() {
   function initTable() {
     $.ajax({
       method: 'GET',
-      url: '/my/article/list',
+      url: '/article/v1/list',
       data: q,
       success: function(res) {
-        if (res.status !== 0) {
+        if (res.code !== 200) {
           return layer.msg('获取文章列表失败！')
         }
         // 使用模板引擎渲染页面的数据
@@ -58,9 +58,9 @@ $(function() {
   function initCate() {
     $.ajax({
       method: 'GET',
-      url: '/my/article/cates',
+      url: '/article/v1/cates',
       success: function(res) {
-        if (res.status !== 0) {
+        if (res.code !== 200) {
           return layer.msg('获取分类数据失败！')
         }
         // 调用模板引擎渲染分类的可选项
@@ -129,9 +129,9 @@ $(function() {
     layer.confirm('确认删除?', { icon: 3, title: '提示' }, function(index) {
       $.ajax({
         method: 'GET',
-        url: '/my/article/delete/' + id,
+        url: '/article/v1/delete/' + id,
         success: function(res) {
-          if (res.status !== 0) {
+          if (res.code !== 200) {
             return layer.msg('删除文章失败！')
           }
           layer.msg('删除文章成功！')

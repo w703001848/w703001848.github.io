@@ -10,7 +10,7 @@ const {
     update_password_schema,
     update_pic_schema,
     update_status_schema,
-} = require('../utils/joi_schema.js')
+} = require('../common/schema/user.js')
 // 导入用户路由处理函数
 const user_handler = require('../router_handler/user.js')
 
@@ -36,15 +36,15 @@ api_router.post('/v1/logout', user_handler.logout)
 api_router.get('/v1/userinfo', user_handler.getUserinfo)
 
 // 更新用户信息
-api_router.post('/v1/update', expressJoi(update_userinfo_schema), user_handler.updateUserinfo)
+api_router.post('/v1/updateUserinfo', expressJoi(update_userinfo_schema), user_handler.updateUserinfo)
 
 // 更新用户密码
-api_router.post('/v1/update/password', expressJoi(update_password_schema), user_handler.updateUserPassword)
+api_router.post('/v1/updatePassword', expressJoi(update_password_schema), user_handler.updateUserPassword)
 
 // 更新用户头像
-api_router.post('/v1/update/avatar', expressJoi(update_pic_schema), user_handler.updateUserPic)
+api_router.post('/v1/updateAvatar', expressJoi(update_pic_schema), user_handler.updateUserPic)
 
 // 更新用户状态
-api_router.post('/v1/update/status', expressJoi(update_status_schema), user_handler.updateUserStatus)
+api_router.post('/v1/updateStatus', expressJoi(update_status_schema), user_handler.updateUserStatus)
 
 module.exports = api_router

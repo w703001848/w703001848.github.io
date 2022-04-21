@@ -33,6 +33,6 @@ function initEditor() {
     fontsize_formats: '10pt 12pt 14pt 18pt 24pt 36pt',
     //按tab不换行
     nonbreaking_force_tab: true
-    //   imageupload_url: '/user/submit-image'
+    //   imageupload_url: '/user/v1/submit-image'
   })
 }

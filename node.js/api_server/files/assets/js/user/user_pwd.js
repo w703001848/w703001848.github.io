@@ -19,10 +19,10 @@ $(function() {
     e.preventDefault()
     $.ajax({
       method: 'POST',
-      url: '/my/updatepwd',
+      url: '/user/v1/updatePassword',
       data: $(this).serialize(),
       success: function(res) {
-        if (res.status !== 0) {
+        if (res.code !== 200) {
           return layui.layer.msg('更新密码失败！')
         }
         layui.layer.msg('更新密码成功！')

@@ -10,9 +10,9 @@ $(function() {
   function initCate() {
     $.ajax({
       method: 'GET',
-      url: '/my/article/cates',
+      url: '/article/v1/cates',
       success: function(res) {
-        if (res.status !== 0) {
+        if (res.code !== 200) {
           return layer.msg('初始化文章分类失败！')
         }
         // 调用模板引擎，渲染分类的下拉菜单
@@ -95,14 +95,14 @@ $(function() {
   function publishArticle(fd) {
     $.ajax({
       method: 'POST',
-      url: '/my/article/add',
+      url: '/article/v1/add',
       data: fd,
       // 注意：如果向服务器提交的是 FormData 格式的数据，
       // 必须添加以下两个配置项
       contentType: false,
       processData: false,
       success: function(res) {
-        if (res.status !== 0) {
+        if (res.code !== 200) {
           return layer.msg('发布文章失败！')
         }
         layer.msg('发布文章成功！')

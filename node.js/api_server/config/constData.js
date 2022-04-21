@@ -1,6 +1,6 @@
 module.exports = {
-    expiresIn: '1h',
+    expiresIn: '10h',
     expiresRefresh: '7 days',
-    jwtSecretKey: 'wlp No1.',
-    jwtRefreshSecretKey: 'wlp win',
+    jwtSecretKey: 'wlp No1. ^_^',
+    jwtRefreshSecretKey: 'wlp win ^_^',
 }

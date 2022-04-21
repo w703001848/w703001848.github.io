@@ -4,25 +4,33 @@ const express = require('express')
 // 导入第三方模块
 // 导入cors模块
 const cors = require('cors')
-// 导入 @hapi/joi 模块
-const joi = require('joi')
 // 导入token验证中间件
 const expressJWT = require('express-jwt')
+// 导入 joi 模块
+const joi = require('joi')
 
 // 导入自定义模块
 // 导入路由模块
 const api_router = require('./router/index.js')
 const api_router_user = require('./router/user.js')
-const api_router_order = require('./router/order.js')
+const api_router_article = require('./router/article.js')
 // 导入配置文件
 const config = require('./config/constData.js')
 
 // 创建 web 服务器
 const app = express()
 
+// CORS 跨域设置
+app.use(cors())
+
+// 配置解析 JSON 格式 POST 请求的中间件
+app.use(express.json())
+// 配置解析表单 POST 请求的中间件
+app.use(express.urlencoded({ extended: false }))
+
 // 设置静态资源目录
 app.use(express.static('files'))
-app.use('/img', express.static('static'))
+app.use('/img', express.static('uploads'))
 
 // 挂载时间戳中间件
 app.use(function (req, res, next) {
@@ -68,21 +76,13 @@ app.get('/api/jsonp/index', (req, res) => {
     res.sendStatusSuccess(query)
 })
 
-// CORS 跨域设置
-app.use(cors())
-
-// 配置解析 JSON 格式 POST 请求的中间件
-app.use(express.json())
-// 配置解析表单 POST 请求的中间件
-app.use(express.urlencoded({ extended: false }))
-
 // 指定接口不需要验证token
 app.use(expressJWT({secret: config.jwtSecretKey}).unless({path: ['/api/user/v1/register', '/api/user/v1/login']}))
 
 // 设置路由
 app.use('/api/index', api_router)
 app.use('/api/user', api_router_user)
-app.use('/api/order', api_router_order)
+app.use('/api/article', api_router_article)
 
 // 定义 404 页面
 app.use((req, res) => {
@@ -104,6 +104,6 @@ app.use((err, req, res, next) => {
 })
 
 // 启动服务器
-app.listen(80, () => {
-    console.log('express server running at http://127.0.0.1')
+app.listen(3007, () => {
+    console.log('express server running at http://127.0.0.1:3007')
 })
